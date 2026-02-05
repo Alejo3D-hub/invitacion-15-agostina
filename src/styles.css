@@ -1,0 +1,711 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+
+  background-image: url("/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===============================
+   SOBRE / PANTALLA INICIAL
+================================ */
+.envelope-screen {
+  position: fixed;
+  inset: 0;
+  background: #fafafa;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+  cursor: pointer;
+
+  animation: aparecer 1.2s ease forwards;
+}
+
+.envelope-screen img {
+  width: 420px;        /* tamaño base en desktop */
+  max-width: 90vw;     /* que nunca se pase del ancho de pantalla */
+  height: auto;
+  transition: transform 0.4s ease;
+ /* ✨ sombra elegante */
+  filter: drop-shadow(0 15px 35px rgba(0,0,0,0.25));
+}
+
+
+.envelope-screen:hover img {
+  transform: scale(1.05);
+}
+
+.envelope-text {
+  margin-top: 16px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #b89b5e;
+  animation: pulse 2s infinite;
+}
+
+/* Animación entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animación salida */
+.fade-out {
+  animation: fadeOut 0.6s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* ===============================
+   HERO
+================================ */
+.hero {
+  min-height: 100vh;
+  padding: 40px 20px;
+  padding-top: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
+}
+
+.hero-title {
+  width: 1100px;
+  max-width: 95%;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.35));
+}
+
+.hero-subtitle {
+  width: 920px;
+  max-width: 90%;
+  margin-top: 16px;
+  margin-bottom: 30px;
+}
+
+/* ===============================
+   BOTONES
+================================ */
+.btn-primary {
+  background-color: #c2185b;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #a0174a;
+}
+
+/* ===============================
+   CONFIRMAR
+================================ */
+.container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-wrapper {
+  max-width: 375px;
+}
+
+.map-wrapper {
+  max-width: 75%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: #181817;
+  text-align: center;
+}
+
+.form-group select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+#menuEspecial {
+  margin-bottom: 23px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2684FF; /* mismo azul que los otros */
+  box-shadow: 0 0 0 4px rgba(38, 132, 255, 0.3);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #4a90e2;
+}
+
+
+/* ===============================
+   BOTÓN MÚSICA
+================================ */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  z-index: 1000;
+}
+
+.music-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-weight: 600;
+  color: #b89b5e;
+  font-size: 1rem;
+}
+
+/* Hamburguesa */
+#nav-toggle {
+  display: none;
+}
+
+.nav-hamburger {
+  width: 26px;
+  height: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.nav-hamburger span {
+  height: 2px;
+  width: 100%;
+  background-color: #b89b5e;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación hamburguesa */
+#nav-toggle:checked + .nav-hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#nav-toggle:checked + .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+#nav-toggle:checked + .nav-hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Menú */
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  list-style: none;
+  padding: 12px 0;
+  margin: 0;
+
+  width: 190px;
+  display: none;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+  animation: menuFade 0.25s ease;
+}
+
+#nav-toggle:checked ~ .nav-menu {
+  display: block;
+}
+
+/* Items */
+.nav-menu li {
+  
+  padding: 12px 20px;
+  text-align: center;
+  
+}
+
+.nav-menu a,
+.nav-menu button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  text-decoration: none;
+  color: #b89b5e;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: inherit;
+
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+
+.nav-menu a:hover,
+.nav-menu button:hover {
+  color: #5c0250;
+}
+/* Item deshabilitado */
+.nav-menu .disabled {
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+/* Animación suave */
+@keyframes menuFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.playlist-btn {
+  all: unset;              /* borra estilos nativos del button */
+  display: block;          /* igual que <a> */
+  width: 100%;
+  padding: 0.5rem 1rem;    /* iguala a los links */
+  text-align: left;        /* clave para que no quede corrido */
+  cursor: pointer;
+
+  /* estilos visuales */
+  color: #b89b5e;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.playlist-btn:hover {
+  color: #e0c27a;
+}
+.playlist-btn {
+  all: unset;              /* borra estilos nativos del button */
+  display: block;          /* igual que <a> */
+  width: 100%;
+  padding: 0.5rem 1rem;    /* iguala a los links */
+  text-align: left;        /* clave para que no quede corrido */
+  cursor: pointer;
+
+  /* estilos visuales */
+  color: #b89b5e;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.playlist-btn:hover {
+  color: #e0c27a;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 576px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .form-wrapper,
+  .map-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .envelope-screen img {
+    width: 85vw;       /* ocupa casi toda la pantalla */
+  }
+}
+
+/* ===============================
+   Playlist
+================================ */
+.playlist-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.playlist-form label {
+  display: flex;
+  flex-direction: column;
+  color: #19191a;
+  font-size: 0.9rem;
+}
+
+.playlist-form input {
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #d4af37;
+  background: transparent;
+  color: #1a1919;
+}
+
+.playlist-form button {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #131212;
+  background: #d4af37;
+  color: #141413;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.playlist-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+.playlist-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.playlist-modal {
+  background: #ffffff;
+  border: 1px solid #d4af37;
+  padding: 30px 25px;
+  max-width: 420px;
+  width: 90%;
+  border-radius: 12px;
+  position: relative;
+}
+
+.playlist-modal h2 {
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+.playlist-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ===============================
+   MODAL GALERÍA
+================================ */
+
+.gallery-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px 20px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+}
+
+.gallery-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.gallery-title {
+  margin: 0;
+  color: #b89b5e;
+  font-size: 1.2rem;
+}
+
+.gallery-subtitle {
+  font-size: 0.9rem;
+  margin: 8px 0 20px;
+  color: #666;
+}
+
+.gallery-link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #b89b5e;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.gallery-link.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* ===============================
+   VISOR DE IMAGEN AMPLIADA
+================================ */
+
+.image-viewer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 3000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-viewer {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+/* ===============================
+   MODAL REGALOS
+================================ */
+
+.gifts-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gifts-modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 26px 22px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.gifts-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.gifts-title {
+  margin: 0;
+  color: #b89b5e;
+  font-size: 1.2rem;
+}
+
+.gifts-text {
+  font-size: 0.9rem;
+  margin: 10px 0 18px;
+  color: #666;
+}
+
+.gifts-data {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.gifts-data div {
+  background: #f7f4ef;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.gifts-data span {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.gifts-data strong {
+  font-size: 0.95rem;
+  color: #333;
+  word-break: break-all;
+}
+
+.gifts-note {
+  font-size: 0.85rem;
+  color: #777;
+}
+/* ===============================
+   BOTÓN COPIAR (REGALOS)
+================================ */
+
+.copy-btn {
+  margin-top: 10px;
+  margin-left: 12px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  background: #b89b5e;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #c9ad72;
+}
+
+/* ===============================
+    UBICACIÓN
+================================ */
+
+.location-name {
+  color: #b89b5e;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.location-address {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 16px;
+}
+.maps-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #b89b5e;
+  text-decoration: underline;
+  margin-bottom: 16px;
+}
