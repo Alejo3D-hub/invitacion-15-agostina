@@ -146,7 +146,7 @@ function App() {
           </button>
 
           {/* HERO / PORTADA */}
-          <section className="hero">
+          <section id="inicio" className="hero">
             <img
               src="/titulo.png"
               alt="Los 15 de Agostina"
