@@ -1,7 +1,7 @@
 import "./styles.css";
 import { useRef, useState } from "react";
 
-const GALLERY_ENABLED = true;
+const GALLERY_ENABLED = false;
 
 function App() {
   const audioRef = useRef(null);
