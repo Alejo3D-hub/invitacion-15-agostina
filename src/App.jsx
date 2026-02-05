@@ -316,7 +316,7 @@ function App() {
             <div className="gifts-data">
               <div>
                 <span>Alias</span>
-                <strong>AGOSTINA-XV</strong>
+                <strong>agostina-xv</strong>
                 <button
                   type="button"
                   className="copy-btn"
