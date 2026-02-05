@@ -320,7 +320,7 @@ function App() {
                 <button
                   type="button"
                   className="copy-btn"
-                  onClick={() => copyToClipboard("AGOSTINA.15")}
+                  onClick={() => copyToClipboard("AGOSTINA-15")}
                 >
                   Copiar alias
                 </button>
